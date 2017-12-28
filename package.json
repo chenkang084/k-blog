@@ -1,0 +1,40 @@
+{
+  "name": "blog",
+  "version": "0.0.1",
+  "description": "rengised's blog to share skills",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":
+      "cd build && cross-env NODE_ENV=dev webpack-dev-server --progress --color"
+  },
+  "keywords": ["blog"],
+  "author": "chenkang084@163.com",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-import": "^1.1.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-1": "^6.22.0",
+    "classnames": "^2.2.5",
+    "clean-webpack-plugin": "^0.1.17",
+    "copy-webpack-plugin": "^4.1.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.1",
+    "html-webpack-plugin": "^2.28.0",
+    "less": "^2.3.1",
+    "less-loader": "^4.0.5",
+    "lodash": "^4.17.4",
+    "postcss-loader": "^0.11.0",
+    "rimraf": "^2.6.2",
+    "webpack": "^3.7.1",
+    "webpack-dev-server": "2.7.1"
+  }
+}
