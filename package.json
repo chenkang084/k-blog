@@ -1,10 +1,11 @@
 {
-  "name": "blog",
+  "name": "k-blog",
   "version": "0.0.1",
   "description": "rengised's blog to share skills",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "cnpm install",
     "start":
       "cd build && cross-env NODE_ENV=dev webpack-dev-server --progress --color"
   },
@@ -12,8 +13,10 @@
   "author": "chenkang084@163.com",
   "license": "ISC",
   "dependencies": {
+    "animate.css": "^3.5.2",
     "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "react-dom": "^15.3.1",
+    "react-router": "^2.8.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -34,6 +37,7 @@
     "lodash": "^4.17.4",
     "postcss-loader": "^0.11.0",
     "rimraf": "^2.6.2",
+    "style-loader": "^0.19.1",
     "webpack": "^3.7.1",
     "webpack-dev-server": "2.7.1"
   }

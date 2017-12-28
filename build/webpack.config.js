@@ -10,8 +10,6 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin"),
   CopyWebpackPlugin = require("copy-webpack-plugin"),
   rootPath = path.resolve(__dirname, "../");
 
-
-
 module.exports = {
   devtool: "module-source-map",
   entry: {
@@ -91,13 +89,7 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: function() {
-          return [
-            require("postcss-pxtorem")({
-              rootValue: 100,
-              propWhiteList: []
-            }),
-            require("autoprefixer")
-          ];
+          return [require("autoprefixer")];
         }
       }
     }),
@@ -106,7 +98,7 @@ module.exports = {
       filename: "./index.html", //生成的html存放路径，相对于 path
       template: rootPath + "/src/index.html", //html模板路径
       hash: true //为静态资源生成hash值
-    }),
+    })
     // new webpack.DllReferencePlugin({
     //   context: rootPath,
     //   name: "vendor",
