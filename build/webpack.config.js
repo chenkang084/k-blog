@@ -31,8 +31,11 @@ module.exports = {
         exclude: [path.resolve(rootPath, "./node_modules/")]
       },
       {
-        test: /\.(png|jpg)$/,
-        use: "url-loader?limit=8192&name=src/images/[name].[ext]"
+        test: /\.(eot|otf|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
+        loader: "file-loader",
+        // options: {
+        //   name: "[name].[ext]"
+        // }
       },
       {
         test: /\.css$/,
@@ -48,6 +51,21 @@ module.exports = {
       },
       {
         test: /\.less$/,
+        include: [path.resolve(rootPath, "./src/styles/")],
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            {
+              loader:
+                "css-loader?importLoaders=1&localIdentName=[hash:base64:5]!postcss-loader"
+            },
+            "less-loader"
+          ]
+        })
+      },
+      {
+        test: /\.less$/,
+        exclude: [path.resolve(rootPath, "./src/styles/")],
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: [
@@ -62,7 +80,7 @@ module.exports = {
     ]
   },
   devServer: {
-    // contentBase: rootPath + "/src/public/", //本地服务器所加载的页面所在的目录
+    contentBase: rootPath + "/src/", //本地服务器所加载的页面所在的目录
     host: "0.0.0.0",
     port: 8888,
     historyApiFallback: true, //不跳转

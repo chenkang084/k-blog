@@ -7,6 +7,10 @@ body {
   padding: 0;
 }
 
+html {
+  overflow: hidden;
+}
+
 div,
 span,
 object,
@@ -127,4 +131,14 @@ a {
   text-decoration: none;
 }
 
+.clearfix:after {
+  clear: both;
+  content: "";
+  display: block;
+  visibility: hidden;
+  height: 0;
+}
 
+@import "~animate.css";
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
