@@ -9,14 +9,14 @@ console.log(styles);
 export default class Nav extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { navDisplay: this.menus[0].title };
+    this.state = { navDisplay: "酱辛世家" };
     this.titles();
   }
 
   menus = [
-    { title: "菜谱", href: "/home" },
-    { title: "博文", href: "/test" },
-    { title: "心情日记", href: "/test" }
+    { title: "美食生活", href: "/home" },
+    { title: "心情日记", href: "/test" },
+    { title: "了解酱辛", href: "/test" }
   ];
 
   componentDidMount() {
@@ -44,7 +44,17 @@ export default class Nav extends React.Component {
         <header className={styles.nav}>
           <div className={styles.container}>
             <div className={styles.home}>
-              <Link to="/home" className={classnames("animated", "fadeInDown")}>
+              <Link
+                to="/home"
+                className={classnames(
+                  "animated",
+                  "fadeInDown",
+                  this.state.navDisplay === "酱辛世家" ? styles.navDefault : ""
+                )}
+                onClick={() => {
+                  this.handleDisplay("酱辛世家");
+                }}
+              >
                 <i className={styles.navLogo} />酱辛世家
               </Link>
             </div>

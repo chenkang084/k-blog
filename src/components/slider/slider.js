@@ -24,7 +24,6 @@ export default class CustomSlider extends React.Component {
       <div id="home-slider-container">
         <Slider {...this.defaultSettings}>
           <div className={styles.sliderImgContainer}>
-            {/* <img src="../../assets/imgs/sliders/1.jpg" /> */}
             <div
               style={{
                 background: "url(../../assets/imgs/sliders/1.jpg) no-repeat",
@@ -35,7 +34,6 @@ export default class CustomSlider extends React.Component {
             />
           </div>
           <div className={styles.sliderImgContainer}>
-            {/* <img src="../../assets/imgs/sliders/2.jpg" /> */}
             <div
               style={{
                 background: "url(../../assets/imgs/sliders/2.jpg) no-repeat",
