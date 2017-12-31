@@ -43,6 +43,11 @@ export default class Nav extends React.Component {
       <div>
         <header className={styles.nav}>
           <div className={styles.container}>
+            <div className={styles.home}>
+              <Link to="/home" className={classnames("animated", "fadeInDown")}>
+                <i className={styles.navLogo} />酱辛世家
+              </Link>
+            </div>
             <ul>
               {this.menus.map(item => {
                 return (
