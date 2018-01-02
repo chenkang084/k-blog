@@ -2,9 +2,10 @@ import React from "react";
 import { Router, Route, IndexRoute, browserHistory } from "react-router";
 import Home from "../components/home/home";
 import Nav from "../components/nav/nav";
-import Test from "../components/home/test";
+import WeiStore from "../components/weiStore/weiStore";
+import AboutUs from "../components/aboutUs/aboutUs";
 
-function yourHandler(params) {
+function handleRoute(params) {
   console.log(params);
   const content = document.getElementById("router-content");
   if (!content.className) {
@@ -18,10 +19,11 @@ function yourHandler(params) {
 const appRouters = () => (
   <div>
     <Router history={browserHistory}>
-      <Route path="/" component={Nav} onChange={yourHandler}>
+      <Route path="/" component={Nav} onChange={handleRoute}>
         <IndexRoute component={Home} />
         <Route path="/home" component={Home} />
-        <Route path="/test" component={Test} />
+        <Route path="/weiStore" component={WeiStore} />
+        <Route path="/aboutUs" component={AboutUs} />
       </Route>
     </Router>
   </div>

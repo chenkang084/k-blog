@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { axiosService } from "../../services/axios.service";
-export default class Home extends React.Component {
+export default class weiStore extends React.Component {
   componentDidMount() {
     const screenH = window.innerHeight,
       weiStoreDom = document.getElementById("weiStore");
