@@ -27,7 +27,7 @@ export function listenVisibilityState(showCb, hideCb) {
     function() {
       console.log(document[state], "====");
       if (document[state] === "hidden") {
-        document.title = "记得回来吃饭"; // 页面不可见时 ，可换成你的 title
+        document.title = "酱辛喊你回来吃酱"; // 页面不可见时 ，可换成你的 title
         isFunction(hideCb) && hideCb();
       } else {
         document.title = "酱辛世家"; // 页面可见

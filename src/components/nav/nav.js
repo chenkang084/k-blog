@@ -65,7 +65,7 @@ export default class Nav extends React.Component {
             </ul>
           </div>
         </header>
-        <div id="router-content" style={{ height: "calc(100% - 306px)" }}>
+        <div id="router-content" style={{ height: "calc(100% - 66px)" }}>
           {this.props.children}
         </div>
         <Footer />
