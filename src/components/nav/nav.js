@@ -5,7 +5,7 @@ import styles from "./nav.less";
 import { listenVisibilityState } from "../../utils/events";
 import classnames from "classnames";
 import { getUrlPath } from "../../utils/url";
-console.log(styles);
+import Footer from "../footer/footer";
 
 export default class Nav extends React.Component {
   constructor(props) {
@@ -42,53 +42,33 @@ export default class Nav extends React.Component {
   };
 
   render() {
-    return (
-      <div>
+    return <div style={{ height: "100%" }}>
         <header className={styles.nav}>
           <div className={styles.container}>
             <div className={styles.home}>
-              <Link
-                to="/home"
-                className={classnames(
-                  "animated",
-                  "fadeInDown",
-                  this.state.navDisplay === "/home" ? styles.navDefault : ""
-                )}
-                onClick={() => {
+              <Link to="/home" className={classnames("animated", "fadeInDown", this.state.navDisplay === "/home" ? styles.navDefault : "")} onClick={() => {
                   this.handleDisplay("/home");
-                }}
-              >
+                }}>
                 <i className={styles.navLogo} />酱辛世家
               </Link>
             </div>
             <ul>
               {this.menus.map(item => {
-                return (
-                  <li
-                    className={classnames("animated", "fadeInDown")}
-                    key={item.title}
-                    onClick={() => {
+                return <li className={classnames("animated", "fadeInDown")} key={item.title} onClick={() => {
                       this.handleDisplay(item.href);
-                    }}
-                  >
-                    <Link
-                      to={item.href}
-                      className={
-                        item.href === this.state.navDisplay
-                          ? styles.navTitleDefault
-                          : ""
-                      }
-                    >
+                    }}>
+                    <Link to={item.href} className={item.href === this.state.navDisplay ? styles.navTitleDefault : ""}>
                       {item.title}
                     </Link>
-                  </li>
-                );
+                  </li>;
               })}
             </ul>
           </div>
         </header>
-        <div id="router-content">{this.props.children}</div>
-      </div>
-    );
+        <div id="router-content" style={{ height: "calc(100% - 306px)" }}>
+          {this.props.children}
+        </div>
+        <Footer />
+      </div>;
   }
 }

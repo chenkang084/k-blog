@@ -121,12 +121,6 @@ a img {
 :focus {
   outline: 0;
 }
-
-html,
-body {
-  background: #fefefe;
-}
-
 a {
   text-decoration: none;
 }
@@ -139,6 +133,19 @@ a {
   height: 0;
 }
 
+html,
+body {
+  background: #fefefe;
+  height: 100%;
+  width: 100%;
+}
+
 @import "~animate.css";
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
+@import "./query.less";
+
+#root,
+#root > div {
+  height: 100%;
+}
