@@ -83,7 +83,7 @@ module.exports = {
   devServer: {
     contentBase: rootPath + "/src/", //本地服务器所加载的页面所在的目录
     host: "0.0.0.0",
-    port: 8888,
+    port: 9001,
     disableHostCheck: true,
     historyApiFallback: true, //不跳转
     inline: true, //实时刷新
