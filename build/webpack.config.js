@@ -14,6 +14,7 @@ module.exports = {
   devtool: "module-source-map",
   entry: {
     app: [
+      "babel-polyfill",
       rootPath + "/src/index.js" //唯一入口文件
     ]
   },
@@ -32,7 +33,7 @@ module.exports = {
       },
       {
         test: /\.(eot|otf|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
-        loader: "file-loader",
+        loader: "file-loader"
         // options: {
         //   name: "[name].[ext]"
         // }
@@ -83,6 +84,7 @@ module.exports = {
     contentBase: rootPath + "/src/", //本地服务器所加载的页面所在的目录
     host: "0.0.0.0",
     port: 8888,
+    disableHostCheck: true,
     historyApiFallback: true, //不跳转
     inline: true, //实时刷新
     proxy: {
@@ -111,6 +113,10 @@ module.exports = {
         }
       }
     }),
+    new webpack.DefinePlugin({
+      env: "'" + env + "'"
+    }),
+
     new HtmlWebpackPlugin({
       //根据模板插入css/js等生成最终HTML
       filename: "./index.html", //生成的html存放路径，相对于 path

@@ -4,19 +4,22 @@ import { Link } from "react-router";
 import styles from "./nav.less";
 import { listenVisibilityState } from "../../utils/events";
 import classnames from "classnames";
+import { getUrlPath } from "../../utils/url";
 console.log(styles);
 
 export default class Nav extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { navDisplay: "酱辛世家" };
+
+    const pathname = getUrlPath(window.location.pathname) || "home";
+    this.state = { navDisplay: "/" + pathname };
     this.titles();
   }
 
   menus = [
-    { title: "美食生活", href: "/home" },
-    { title: "心情日记", href: "/test" },
-    { title: "了解酱辛", href: "/test" }
+    { title: "美食生活", href: "/#" },
+    { title: "微店", href: "/weiStore" },
+    { title: "了解酱辛", href: "/aboutUs" }
   ];
 
   componentDidMount() {
@@ -49,10 +52,10 @@ export default class Nav extends React.Component {
                 className={classnames(
                   "animated",
                   "fadeInDown",
-                  this.state.navDisplay === "酱辛世家" ? styles.navDefault : ""
+                  this.state.navDisplay === "/home" ? styles.navDefault : ""
                 )}
                 onClick={() => {
-                  this.handleDisplay("酱辛世家");
+                  this.handleDisplay("/home");
                 }}
               >
                 <i className={styles.navLogo} />酱辛世家
@@ -65,13 +68,13 @@ export default class Nav extends React.Component {
                     className={classnames("animated", "fadeInDown")}
                     key={item.title}
                     onClick={() => {
-                      this.handleDisplay(item.title);
+                      this.handleDisplay(item.href);
                     }}
                   >
                     <Link
                       to={item.href}
                       className={
-                        item.title === this.state.navDisplay
+                        item.href === this.state.navDisplay
                           ? styles.navTitleDefault
                           : ""
                       }
