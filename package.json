@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup": "cnpm install",
-    "start": "cd build && cross-env NODE_ENV=dev webpack-dev-server --progress --color"
+    "start": "cd build && cross-env NODE_ENV=dev webpack-dev-server --progress --color",
+    "build": "npm run clean && cd build && cross-env NODE_ENV=prod webpack",
+    "clean": "rimraf ./dist/*"
   },
   "keywords": [
     "blog"

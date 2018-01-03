@@ -8,7 +8,7 @@ export default class Home extends React.Component {
     return (
       <div>
         <CustomSlider />
-        {/* <Collapse /> */}
+        <div style={{height:"100px"}}>test</div>
       </div>
     );
   }

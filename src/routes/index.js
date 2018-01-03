@@ -17,16 +17,14 @@ function handleRoute(params) {
 }
 
 const appRouters = () => (
-  <div>
-    <Router history={browserHistory}>
-      <Route path="/" component={Nav} onChange={handleRoute}>
-        <IndexRoute component={Home} />
-        <Route path="/home" component={Home} />
-        <Route path="/weiStore" component={WeiStore} />
-        <Route path="/aboutUs" component={AboutUs} />
-      </Route>
-    </Router>
-  </div>
+  <Router history={browserHistory}>
+    <Route path="/" component={Nav} onChange={handleRoute}>
+      <IndexRoute component={Home} />
+      <Route path="/home" component={Home} />
+      <Route path="/weiStore" component={WeiStore} />
+      <Route path="/aboutUs" component={AboutUs} />
+    </Route>
+  </Router>
 );
 
 export default appRouters;

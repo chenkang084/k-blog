@@ -136,8 +136,9 @@ a {
 html,
 body {
   background: #fefefe;
-  height: 100%;
+  // height: 100%;
   width: 100%;
+  // overflow: hidden;
 }
 
 @import "~animate.css";
@@ -147,7 +148,13 @@ body {
 
 @import "./query.less";
 
-// #root,
-// #root > div {
-//   height: 100%;
-// }
+#root,
+#root > div {
+  position: relative;
+  // height: 100%;
+}
+
+#router-content {
+  padding-bottom: 50px;
+  // min-height: 500px;
+}

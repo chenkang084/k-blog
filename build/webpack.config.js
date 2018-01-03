@@ -10,7 +10,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin"),
   CopyWebpackPlugin = require("copy-webpack-plugin"),
   rootPath = path.resolve(__dirname, "../");
 
-module.exports = {
+const webpackConfig = {
   devtool: "module-source-map",
   entry: {
     app: [
@@ -122,7 +122,7 @@ module.exports = {
       filename: "./index.html", //生成的html存放路径，相对于 path
       template: rootPath + "/src/index.html", //html模板路径
       hash: true //为静态资源生成hash值
-    })
+    }),
     // new webpack.DllReferencePlugin({
     //   context: rootPath,
     //   name: "vendor",
@@ -131,15 +131,30 @@ module.exports = {
     //     "./src/public/library/vendor-manifest.json"
     //   ))
     // }),
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: rootPath + "/src/public/",
-    //     to: rootPath + "/dist"
-    //   }
-    // ])
+    new CopyWebpackPlugin([
+      {
+        from: rootPath + "/src/assets/",
+        to: rootPath + "/dist/assets"
+      }
+    ])
   ],
   resolve: {
     modules: ["node_modules", path.join(rootPath, "./node_modules")],
     extensions: [".web.js", ".js", ".json", ".scss", ".css", ".less"]
   }
 };
+
+if (env == "prod") {
+  console.log(
+    "=============================start uglify============================="
+  );
+  webpackConfig.plugins = webpackConfig.plugins.concat([
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ]);
+}
+
+module.exports = webpackConfig;
