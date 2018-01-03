@@ -31,7 +31,6 @@ export function listenVisibilityState(showCb, hideCb) {
         isFunction(hideCb) && hideCb();
       } else {
         document.title = "酱辛世家"; // 页面可见
-
         isFunction(showCb) && showCb();
       }
     },

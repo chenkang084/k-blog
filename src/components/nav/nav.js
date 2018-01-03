@@ -50,8 +50,6 @@ export default class Nav extends React.Component {
               <Link
                 to="/home"
                 className={classnames(
-                  "animated",
-                  "fadeInDown",
                   this.state.navDisplay === "/home" ? styles.navDefault : ""
                 )}
                 onClick={() => {

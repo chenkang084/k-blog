@@ -24,9 +24,9 @@ export default class Footer extends React.Component {
   render() {
     return (
       <div className={styles.collapseContainer}>
-        <section className={styles.closeWrap}>
+        <section className={styles.closeWrap} onClick={this.handleCollapse}>
           <div className={styles.closeContent}>润州酱小辛食品</div>
-          <div className={styles.closeIconWrap} onClick={this.handleCollapse}>
+          <div className={styles.closeIconWrap}>
             {this.state.open && (
               <div>
                 <i
@@ -45,13 +45,7 @@ export default class Footer extends React.Component {
             )}
           </div>
         </section>
-        <section
-          className={
-            this.state.open
-              ? classnames("animated ", styles.open)
-              : classnames("animated ", styles.close)
-          }
-        >
+        <section className={this.state.open ? styles.open : styles.close}>
           <div className={styles.footerContainer}>
             <ul>
               <li>
