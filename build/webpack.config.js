@@ -21,7 +21,7 @@ const webpackConfig = {
   output: {
     path: rootPath + "/dist", //打包后的文件存放的地方
     filename: "[name].[chunkhash:8].bundle.js", //打包后输出文件的文件名
-    // publicPath: "./public",
+    publicPath: "/", //指定webpack输出的js文件根路径
     chunkFilename: "[name]-[id].[chunkhash:8].bundle.js"
   },
   module: {
@@ -37,6 +37,15 @@ const webpackConfig = {
         // options: {
         //   name: "[name].[ext]"
         // }
+      },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: "html-loader",
+          options: {
+            attrs: [":data-src"]
+          }
+        }
       },
       {
         test: /\.css$/,
@@ -57,9 +66,15 @@ const webpackConfig = {
           fallback: "style-loader",
           use: [
             {
-              loader:
-                "css-loader?importLoaders=1&localIdentName=[hash:base64:5]!postcss-loader"
+              loader: "css-loader",
+              options: {
+                sourceMap: false,
+                minimize: env === "dev" ? false : true,
+                importLoader: 1,
+                localIdentName: "[hash:base64:5]"
+              }
             },
+            "postcss-loader",
             "less-loader"
           ]
         })
@@ -71,9 +86,16 @@ const webpackConfig = {
           fallback: "style-loader",
           use: [
             {
-              loader:
-                "css-loader?modules&sourceMap&importLoaders=1&localIdentName=[hash:base64:5]!postcss-loader"
+              loader: "css-loader",
+              options: {
+                sourceMap: false,
+                modules: true,
+                minimize: env === "dev" ? false : true,
+                importLoader: 1,
+                localIdentName: "[hash:base64:5]"
+              }
             },
+            "postcss-loader",
             "less-loader"
           ]
         })
@@ -81,7 +103,9 @@ const webpackConfig = {
     ]
   },
   devServer: {
-    contentBase: rootPath + "/src/", //本地服务器所加载的页面所在的目录
+    contentBase: "./",
+    // contentBase: rootPath + "/src/", //本地服务器所加载的页面所在的目录
+    // contentBase: "./<%= pkg.src %>/",
     host: "0.0.0.0",
     port: 9001,
     disableHostCheck: true,

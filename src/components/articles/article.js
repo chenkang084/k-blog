@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-// const html = require("../articles/1.html");
-export default class AboutUs extends React.Component {
+const html = require("../articles/1.html");
+export default class Article extends React.Component {
   componentDidMount() {
     // document.getElementById("mytest").innerHTML = html;
   }
@@ -10,6 +10,6 @@ export default class AboutUs extends React.Component {
   render() {
     // console.log(html);
 
-    return <div id="mytest">About Us</div>;
+    return <div id="mytest">Article111</div>;
   }
 }
