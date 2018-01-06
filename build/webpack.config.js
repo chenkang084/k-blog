@@ -10,7 +10,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin"),
   CopyWebpackPlugin = require("copy-webpack-plugin"),
   rootPath = path.resolve(__dirname, "../");
 
-module.exports = {
+const webpackConfig = {
   devtool: "module-source-map",
   entry: {
     app: [
@@ -21,7 +21,7 @@ module.exports = {
   output: {
     path: rootPath + "/dist", //打包后的文件存放的地方
     filename: "[name].[chunkhash:8].bundle.js", //打包后输出文件的文件名
-    // publicPath: "./public",
+    publicPath: "/", //指定webpack输出的js文件根路径
     chunkFilename: "[name]-[id].[chunkhash:8].bundle.js"
   },
   module: {
@@ -37,6 +37,15 @@ module.exports = {
         // options: {
         //   name: "[name].[ext]"
         // }
+      },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: "html-loader",
+          options: {
+            attrs: [":data-src"]
+          }
+        }
       },
       {
         test: /\.css$/,
@@ -57,9 +66,15 @@ module.exports = {
           fallback: "style-loader",
           use: [
             {
-              loader:
-                "css-loader?importLoaders=1&localIdentName=[hash:base64:5]!postcss-loader"
+              loader: "css-loader",
+              options: {
+                sourceMap: false,
+                minimize: env === "dev" ? false : true,
+                importLoader: 1,
+                localIdentName: "[hash:base64:5]"
+              }
             },
+            "postcss-loader",
             "less-loader"
           ]
         })
@@ -71,9 +86,16 @@ module.exports = {
           fallback: "style-loader",
           use: [
             {
-              loader:
-                "css-loader?modules&sourceMap&importLoaders=1&localIdentName=[hash:base64:5]!postcss-loader"
+              loader: "css-loader",
+              options: {
+                sourceMap: false,
+                modules: true,
+                minimize: env === "dev" ? false : true,
+                importLoader: 1,
+                localIdentName: "[hash:base64:5]"
+              }
             },
+            "postcss-loader",
             "less-loader"
           ]
         })
@@ -122,7 +144,7 @@ module.exports = {
       filename: "./index.html", //生成的html存放路径，相对于 path
       template: rootPath + "/src/index.html", //html模板路径
       hash: true //为静态资源生成hash值
-    })
+    }),
     // new webpack.DllReferencePlugin({
     //   context: rootPath,
     //   name: "vendor",
@@ -131,15 +153,30 @@ module.exports = {
     //     "./src/public/library/vendor-manifest.json"
     //   ))
     // }),
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: rootPath + "/src/public/",
-    //     to: rootPath + "/dist"
-    //   }
-    // ])
+    new CopyWebpackPlugin([
+      {
+        from: rootPath + "/src/assets/",
+        to: rootPath + "/dist/assets"
+      }
+    ])
   ],
   resolve: {
     modules: ["node_modules", path.join(rootPath, "./node_modules")],
     extensions: [".web.js", ".js", ".json", ".scss", ".css", ".less"]
   }
 };
+
+if (env == "prod") {
+  console.log(
+    "=============================start uglify============================="
+  );
+  webpackConfig.plugins = webpackConfig.plugins.concat([
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ]);
+}
+
+module.exports = webpackConfig;

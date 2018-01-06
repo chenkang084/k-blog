@@ -17,7 +17,7 @@ export default class Nav extends React.Component {
   }
 
   menus = [
-    { title: "美食生活", href: "/#" },
+    { title: "美食生活", href: "/article/1" },
     { title: "微店", href: "/weiStore" },
     { title: "了解酱辛", href: "/aboutUs" }
   ];
