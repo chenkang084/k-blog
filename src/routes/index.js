@@ -5,6 +5,7 @@ import Nav from "../components/nav/nav";
 import WeiStore from "../components/weiStore/weiStore";
 import AboutUs from "../components/aboutUs/aboutUs";
 import Article from "../components/articles/article";
+import ArticleTemplate from "../components/articleTemplate/articleTemplate";
 
 function handleRoute(params) {
   console.log(params);
@@ -24,7 +25,7 @@ const appRouters = () => (
       <Route path="home" component={Home} />
       <Route path="weiStore" component={WeiStore} />
       <Route path="aboutUs" component={AboutUs} />
-      <Route path="article/:id" component={Article} />
+      <Route path="article/template" component={ArticleTemplate} />
     </Route>
   </Router>
 );

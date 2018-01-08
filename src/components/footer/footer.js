@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import styles from "./footer.less";
 import classnames from "classnames";
-console.log(styles);
 
 export default class Footer extends React.Component {
   constructor(props) {

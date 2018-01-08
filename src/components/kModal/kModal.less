@@ -1,0 +1,50 @@
+.kModal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1050;
+  background-color: #000;
+  opacity: 0;
+  //   transition: opacity 0.15s linear;
+}
+
+.kModalFade {
+  opacity: 0.5;
+  transition: opacity 0.15s linear;
+}
+
+.kModalDialog {
+  opacity: 0;
+  background: pink;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  //   margin-top: -100px;
+  .kmodaldialogheader {
+  }
+  .kModalDialogBody {
+  }
+  .kModalDialogFooter {
+  }
+}
+
+.kModalDialogFade {
+  opacity: 1;
+  top: 50%;
+  //   transform: translate(-50%, -50%);
+  //   transition: all 0.3s linear;
+  transition: all 0.3s ease-out;
+}
+
+.kModalDialogSm {
+}
+
+.kModalDialogMd {
+  width: 600px;
+}
+
+.kModalDialogLg {
+}
