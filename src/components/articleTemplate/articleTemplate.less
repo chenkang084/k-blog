@@ -1,0 +1,44 @@
+.articleTemplate {
+  .editWrap,
+  .preViewWrap {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+  }
+
+  .editWrap > div {
+    border: 1px solid #ccc;
+    margin: 0 5px;
+  }
+
+  .preViewWrap > div {
+    border: 1px solid #ccc;
+    margin: 0 5px;
+    height: 525px;
+    overflow-y: scroll;
+  }
+
+  .editWrap {
+    .editContent {
+      height: 400px;
+      overflow-y: scroll;
+    }
+  }
+
+  .preViewWrap {
+    p {
+      min-height: 20px;
+      clear: both;
+    }
+
+    img {
+      display: block;
+    }
+  }
+
+  .sourceCodeTextarea {
+    width: 100%;
+    height: 400px;
+  }
+}
