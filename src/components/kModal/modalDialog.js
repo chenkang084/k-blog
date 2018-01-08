@@ -10,13 +10,19 @@ export default class ModalDialog extends React.Component {
     // console.log("...........");
   }
 
+  componentWillUnmount() {
+    console.log(".......");
+  }
+
+  componentDidUpdate() {
+    console.log(this.props.isShowingModal);
+  }
+
   handleRef = node => {
-    // console.log(node);
     const prevClassName = node.className;
-    requestAnimationFrame(() => {
-    //   console.log(classnames(prevClassName, styles.kModalDialogFade));
-      node.className = classnames(prevClassName, styles.kModalDialogFade);
-    });
+    setTimeout(() => {
+      node.classList.add("kModalDialogFade");
+    }, 17);
   };
 
   handleClose = () => {
@@ -25,10 +31,7 @@ export default class ModalDialog extends React.Component {
 
   render() {
     return (
-      <div
-        ref={this.handleRef}
-        className={classnames(styles.kModalDialog, styles.kModalDialogMd)}
-      >
+      <div ref={this.handleRef} className={"kModalDialog kModalDialogMd"}>
         <div className={styles.kModalDialogHeader}>
           <button onClick={this.handleClose}>close</button>
         </div>

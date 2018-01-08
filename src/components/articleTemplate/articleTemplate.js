@@ -28,6 +28,7 @@ export default class ArticleTemplate extends React.Component {
     return (
       <div>
         <button onClick={this.handleClick}>btn</button>
+        {/* {this.state.isShowingModal && <KModal {...modalProps}>test</KModal>} */}
         <KModal {...modalProps}>test</KModal>
       </div>
     );
